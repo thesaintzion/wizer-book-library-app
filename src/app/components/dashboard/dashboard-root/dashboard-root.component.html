@@ -1,0 +1,93 @@
+<mat-sidenav-container class="sidenav-container theme-light">
+
+    <mat-sidenav #drawer class="sidenav shadow-sm" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+
+            <header class="d-flex justify-content-center text-center  align-items-center align-content-center w-100 py-3">
+                <div>
+                    <a routerLink="/dashboard" class="d-block mt-4  w-100">
+                       <img width="100px"  src="assets/img/logo-dark.png">
+                    </a>
+
+                </div>
+            </header>
+
+
+        <mat-list [ngClass]="loading? 'skeleton-con' : ''" class="mt-4">
+            <ng-container *ngIf="loading else showList">
+                <a *ngFor="let skeleton of skeletons" class="skeleton" mat-list-item>
+                    <mat-icon mat-list-icon></mat-icon>
+                    <div mat-line></div>
+                </a>
+            </ng-container>
+
+
+            <ng-template #showList>
+                <a (click)="closeMen(drawer)" mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                    true}" routerLink="/">
+                    <mat-icon mat-list-icon>library_books</mat-icon>
+                    <div mat-line>Books</div>
+                </a>
+
+                <ng-container *ngFor="let page of pages">
+                    <a *ngIf="page.show" (click)="closeMen(drawer)" mat-list-item routerLinkActive="active" [routerLink]="page.link">
+                        <mat-icon mat-list-icon>{{page.icon}}</mat-icon>
+                        <div mat-line>{{page.name}}
+                        </div>
+                    </a>
+                </ng-container>
+
+
+            </ng-template>
+        </mat-list>
+
+
+
+    </mat-sidenav>
+
+
+    <mat-sidenav-content  class="position-relative">
+
+        <header class="main-header">
+
+            <div *ngIf="(isHandset$ | async)"  class="d-flex  align-items-center align-content-center py-3 container">
+                <div  class="d-flex align-items-center justify-content-center">
+                    <button mat-icon-button class="ml-n2 mr-2 d-sm-block" (click)="drawer.toggle()">
+                        <mat-icon class="text-muted">menu</mat-icon>
+                    </button>
+                </div>
+
+                <div  class="d-flex align-items-center justify-content-center">
+                <a routerLink="/dashboard" class="d-block  w-100">
+                    <img width="50px"  src="assets/img/logo-dark.png">
+                 </a>
+                </div>
+            </div>
+        </header>
+
+        <mat-menu class="shadow rounded-10 py-0" #userMenu="matMenu" xPosition="before">
+            <div class="text-center py-3 px-2 app-primary-bg mt-n2 text-white">
+                <p class="mb-0">User Full Name</p>
+                <small class="mb-0 d-block">user@gmail.com</small>
+            </div>
+            <button routerLink="/dashboard/profile" routerActive="app-blue-color" mat-menu-item class="pr-4">
+                <mat-icon class="app-blue-color">person_outline</mat-icon>
+                <span>Profile</span>
+              </button>
+
+            <button (click)="logout()" mat-menu-item class="pr-4">
+                <mat-icon class="app-blue-color">power_settings_new</mat-icon>
+                <span>Logout</span>
+            </button>
+        </mat-menu>
+
+
+        <div class="router-con">
+            <router-outlet></router-outlet>
+        </div>
+
+        <!-- </div> -->
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+

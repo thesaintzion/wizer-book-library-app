@@ -1,0 +1,41 @@
+<mat-dialog-content>
+
+  <main class="faste pb-3 mt-3">
+    <div class="head">
+      <p class="text-center"> {{data.mode === 'edit' ? 'Edit '+data.type : 'Create new '+data.type}}</p>
+      <button [mat-dialog-close]="false" mat-icon-button tabindex="-1">
+        <mat-icon class="text-bolder">close</mat-icon>
+      </button>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 mx-auto">
+        <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="form">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Book Name</mat-label>
+            <input tabindex="-1" type="text" matInput formControlName="name" placeholder="Book Name" required />
+            <mat-icon class="app-color-gray" matSuffix>library_books</mat-icon>
+
+            <mat-hint class="text-danger" *ngIf="
+                  (bookControls.name.touched || submitted) &&
+                  bookControls.name.errors?.required
+                ">
+              Name is required
+            </mat-hint>
+          </mat-form-field>
+
+          <section>
+            <mat-checkbox class="example-margin" formControlName="isFavorite">Favorite</mat-checkbox>
+          </section>
+
+          <button [disabled]="bookForm.invalid || loading" tabindex="-1" mat-raised-button
+            class="app-primary-bg text-white rounded-60 w-100 mt-4 py-1">
+            {{ loading ? "loading..." : data.mode === 'edit' ? 'Update '+data.type: 'Create '+data.type}}
+
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</mat-dialog-content>

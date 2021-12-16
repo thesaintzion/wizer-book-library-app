@@ -1,0 +1,113 @@
+<main class="theMain">
+  <div class="container">
+    <section
+      class="
+        page-title-section
+        mb-3
+        d-flex
+        align-items-center
+        justify-content-between
+      "
+    >
+      <h3 class="mb-0">Books<span></span></h3>
+      <div class="action d-flex align-items-center">
+        <button
+          (click)="addBook()"
+          tabindex="-1"
+          mat-button
+         class="app-primary-bg text-white rounded-60 w-100 mt-4 py-1"
+        >
+          <mat-icon>add</mat-icon> Add Book
+        </button>
+      </div>
+    </section>
+
+      <div class="mb-4 section-card shadow-0 ">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-responsive-sm table-outline mb-0 mx-4n">
+              <thead class="app-primary-light-b border-0">
+                <tr class="border-0">
+                  <th class="border-0">Name</th>
+                  <th class="text-center border-0">Favorite</th>
+                  <th class="text-center border-0">Created at</th>
+                  <th class="text-right border-0">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let book of books"
+                  class="align-items-center rounded-10 animated fadeInUp"
+                >
+                  <td class="text-capitalize text-left">
+                    <div class="d-flex align-items-center">
+                      <div class="ml-2">{{ book?.name }}</div>
+                    </div>
+                  </td>
+
+                  <td class="text-center app-primary-color">
+                  
+                    <mat-icon>{{  book?.isFavorite ? 'favorite' : 'favorite_border'}}</mat-icon>
+                  </td>
+
+                  <td class="text-center app-primary-color">
+                    {{ book?.createdAt | date }}
+                  </td>
+
+                  <td class="text-right pr-1">
+                    <div>
+                      <button
+                        mat-icon-button
+                        [matMenuTriggerFor]="menu"
+                        aria-label="Example icon-button with a menu"
+                      >
+                        <mat-icon class="text-muted">more_horiz</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="editBook(book)">
+                          <mat-icon>create</mat-icon>
+                          <span>Edit</span>
+                        </button>
+                        <button mat-menu-item (click)="deleteBook(book)">
+                          <mat-icon class="text-danger">cancel</mat-icon>
+                          <span>Delete</span>
+                        </button>
+                      </mat-menu>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+       <div class="text-center my-5" *ngIf="loading">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+            <p
+              class="
+                text-center
+                my-5
+                d-flex
+                align-items-center
+                text-center
+                w-100
+                justify-content-center
+              "
+              *ngIf="books.length < 1 && !loading"
+            >
+              <mat-icon class="text-warning">warning</mat-icon> No data to
+              display
+            </p>
+          </div>
+        </div>
+      </div>
+  </div>
+</main>

@@ -1,0 +1,102 @@
+:host ::ng-deep {
+  .mat-dialog-content {
+    overflow: hidden;
+  }
+  main {
+    width: 100%;
+  }
+
+  .head {
+    padding: 10px 0 10px 0;
+
+    p {
+      font-weight: 600;
+      font-size: 20px !important;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    margin-bottom: 20px;
+
+    .mat-icon-button {
+      position: absolute;
+      right: 0;
+      top: 5px;
+      z-index: 2020;
+
+      .mat-icon {
+        // color: rgba(44, 62, 80, 0.7) !important;
+      }
+    }
+  }
+
+  .login-logo {
+    width: 60px;
+    display: block;
+    margin: 0 auto 40px auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -0;
+    opacity: 0.1;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    display: none;
+  }
+
+  form {
+    .mat-icon {
+      color: var(--appPrimary);
+    }
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      border-radius: 9px !important;
+    }
+  }
+
+  .mat-dialog-title {
+    padding: 10px 20px 10px 20px !important;
+    z-index: 999;
+    color: #000;
+    position: fixed;
+    // display: ;
+    top: 0;
+    left: 0;
+    width: 100%;
+    h5 {
+      font-size: 18px !important;
+    }
+  }
+
+  .mat-dialog-content {
+    padding-top: 0;
+    padding-bottom: 20px;
+    min-height: 25rem;
+    overflow-y: auto !important;
+    background-color: #fff !important;
+    border-radius: 15px !important;
+  }
+
+  @media screen and (min-width: 767px) {
+    .mat-dialog-content {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .more-photo-holder {
+      height: 200px !important;
+    }
+  }
+
+  @media screen and (min-width: 767px) {
+    .mat-dialog-content {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .more-photo-holder {
+      height: 200px !important;
+    }
+  }
+}

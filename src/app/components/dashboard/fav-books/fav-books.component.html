@@ -1,0 +1,69 @@
+<main class="theMain">
+    <div class="container px-5">
+        <section class="
+          page-title-section
+          mb-3
+          d-flex
+          align-items-center
+          justify-content-between
+        ">
+            <h3 class="mb-0">Fav Books<span></span></h3>
+        </section>
+
+        <div class="mb-4 section-card shadow-0 ">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-responsive-sm table-outline mb-0 mx-4n">
+                        <thead class="app-primary-light-b border-0">
+                            <tr class="border-0">
+                                <th class="border-0">Name</th>
+                                <th class="text-right border-0">Favorite</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let book of books" class="align-items-center rounded-10 animated fadeInUp">
+                                <td class="text-capitalize text-left">
+                                    <div class="d-flex align-items-center">
+                                        <div class="ml-2">{{ book?.name }}</div>
+                                    </div>
+                                </td>
+
+                                <td class="text-right app-primary-color">
+
+                                    <mat-icon>{{ book?.isFavorite ? 'favorite' : 'favorite_border'}}</mat-icon>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="text-center my-5" *ngIf="loading">
+                        <div class="lds-roller">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <p class="
+                  text-center
+                  my-5
+                  d-flex
+                  align-items-center
+                  text-center
+                  w-100
+                  justify-content-center
+                " *ngIf="books.length < 1 && !loading">
+                        <mat-icon class="text-warning">warning</mat-icon> No data to
+                        display
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

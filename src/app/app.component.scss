@@ -1,0 +1,52 @@
+:host ::ng-deep {
+    .mat-progress-bar-con {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 999999999999999 !important;
+        background-color: rgba( 255, 255, 255, 0.4) !important;
+        .mat-progress-bar {
+            position: absolute !important;
+        }
+    }
+    .mat-progress-bar-con2 {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 999999999999999 !important;
+        // background-color: #5f6061 !important;
+        // background-color: rgba( 00, 00, 00, 0.9) !important;
+        img {
+            height: 100px;
+            width: 100px;
+            margin: 0 auto !important;
+        }
+    }
+
+    .the-con {
+
+        background-color: var(--appGray);
+        background-color: #eee;
+        // padding-left: 40px;
+        // padding-right: 40px;
+
+
+        ::-webkit-scrollbar,
+        ::-webkit-scrollbar-thumb {
+           background-color: #fff !important;
+        display: none;
+       }
+        ::-webkit-scrollbar-thumb {
+           background-color: #fff !important;
+           display: none;
+       }
+    }
+
+    @media (max-width: 767px) {
+
+    }
+}
